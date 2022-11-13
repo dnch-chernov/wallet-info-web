@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-import { Container, Divider, Grid, Header, Message } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
 
 const Web3 = require("web3");
 const w3 = new Web3("https://goerli.infura.io/v3/606f8736b7d14795a3cba86cd814d4fa");
@@ -39,10 +39,13 @@ export function ResultsPage() {
                 contractUSDC.methods.balanceOf(address).call().then((wei) => {
                     setBalance(`${w3.utils.fromWei(wei, 'mwei')} ${token.toLocaleUpperCase()}`);
                 });
+                break;
+            default:
+                setBalance('-1')
 
 
         }
-    }, []);
+    }, [token, address]);
     return (
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
