@@ -33,4 +33,4 @@ jobs:
         role-session-name: ${{ env.AWS_SESSION_NAME }}
         aws-region: ${{ env.AWS_REGION }}
     - name: Upload to S3 bucket
-      run: aws s3 cp ./dist/ s3://${{ env.BUCKET_NAME }}/${{ github.sha }}/ --recursive
+      run: aws s3 cp ./build/ s3://${{ env.BUCKET_NAME }}/${{ github.sha }}/ --recursive
