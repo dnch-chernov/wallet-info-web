@@ -46,3 +46,10 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Invoke e2e test workflow. Wait for result
+        uses: aurelien-baudet/workflow-dispatch@v2
+        with:
+          workflow: Deploy and Test
+          token: ${{ secrets.GTA_REPO_ACCESS_TOKEN }}
+          repo: dnch-chernov/grand-test-automation
