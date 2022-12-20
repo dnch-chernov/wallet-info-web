@@ -20,10 +20,12 @@ export function ResultsPage() {
   }, [token, address]);
   return (
     <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' data-testid='header-title'>Balance</Header>
-        <Header as='h2' color='grey' data-testid='header-value'>{balance}</Header>
-      </Grid.Column>
+      {error ? <div>{error}</div> :
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='teal' data-testid='header-title'>Balance</Header>
+          <Header as='h2' color='grey' data-testid='header-value'>{balance}</Header>
+        </Grid.Column>
+      }
     </Grid>
   );
 }
